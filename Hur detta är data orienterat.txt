@@ -1,0 +1,9 @@
+Unity Dots paketet är via design data orienterat, paketet är byggt så det inte går att göra det objekt orienterat.
+Men hur det fungerar är via ett ECS system. Då componenterna är bara structs data behållare och funktionaliteten är frikopplad
+från data behållarna. Hur detta fungerar är att genom att skapa en Entitet som representerar ett id. Komponenterna man vill lägga till
+på en specifik entitet får samma id som entiteten. Detta kan vara ett index i en lista eller så kan det vara ett implicit id. Att 
+komponenterna sparas på samma index som entiteten. På detta sätt vet man vilka komponenter hör till vilken entitet.
+Hur detta är Data orienterat är att alla komponenter är sparade i var sin lista och datan är sparad på samma ställe i minnet.
+När man vill uppdatera dessa komponenter gör man det på alla komponenter i listan, vilket gör att man slipper hoppa runt i minnet.
+Att slippa hoppa runt i minnet gör att man slipper många overheaden av att hämta data lika ofta. Det är även cache vänligt pga
+komponenterna är ren data, vilket gör att man inte får lika många cache missar. 
